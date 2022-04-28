@@ -15,8 +15,10 @@ Docker Hub reference: https://hub.docker.com/r/datalust/seq
 | 10. | List containers     | docker container list --all                                                                                       |                                              |
 | 11. | Run container       | docker container run --name mycontainer --env ACCEPT_EULA=Y --publish 5341:80 datalust/seq                        | Running in attached mode, use Ctrl+c to kill |
 | 12. | List containers     | docker container list --all                                                                                       |                                              |
-| 13. | Remove containers   | docker container stop $(docker container ls --all --quiet)                                                        |                                              |
+| 13. | Stop containers     | docker container stop $(docker container ls --all --quiet)                                                        |                                              |
 | 14. | List containers     | docker container list --all                                                                                       |                                              |
-| 15. | List images         | docker image ls                                                                                                   |                                              |
-| 16. | Remove images       | docker image rm -f $(docker image ls -aq)                                                                         |                                              |
+| 15. | Delete containers   | docker container rm $(docker container ls --all --quiet)                                                          |                                              |
+| 16. | List containers     | docker container list --all                                                                                       |                                              |
 | 17. | List images         | docker image ls                                                                                                   |                                              |
+| 18. | Remove images       | docker image rm -f $(docker image ls -aq)                                                                         |                                              |
+| 19. | List images         | docker image ls                                                                                                   |                                              |
