@@ -3,9 +3,6 @@
 |     | Command                                                                                                        | Comment                                       |
 | --- | -------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
 | 1   | create Dockerfile                                                                                              | right click on project / add / docker support |
-| 2   | show Dockerfile                                                                                                |                                               |
-| 3   | move Dockerfile                                                                                                | to parent directory                           |
-| 4   | cd /Source/WeatherApi                                                                                          |                                               |
 | 5   | docker image build --tag weatherapi:latest .                                                                   |                                               |
 | 6   | docker image ls                                                                                                |                                               |
 | 7   | docker container ls --all                                                                                      |                                               |
@@ -15,6 +12,7 @@
 | 11  | docker container create --publish 9992:80 --env "Weather:City=Melbourne" --name weatherapimelbourne weatherapi |                                               |
 | 12  | docker container start weatherapimelbourne                                                                     |                                               |
 | 13  | docker container ls --all                                                                                      |                                               |
+| 14  | docker container attach weatherapimelbourne                                                                    |                                               |
 
 ## Clean up
 

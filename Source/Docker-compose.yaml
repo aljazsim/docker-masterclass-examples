@@ -1,0 +1,44 @@
+version: "3.9"
+
+services:
+    seq:
+        image: datalust/seq
+        container_name: seq
+        ports:
+            - 5340:80
+            - 5341:5341
+        environment:
+            - ACCEPT_EULA=Y
+            - BASE_URI=https://seq
+        volumes:
+            - /mnt/c/Development/Data/Seq:/data
+        restart: unless-stopped
+
+    weather.api:
+        image: weather.api
+        container_name: weather.api
+        build:
+            context: .\
+            dockerfile: WeatherApi\\Dockerfile
+        depends_on:
+            - seq
+        ports:
+            - 9991:80
+        environment:
+            - Serilog:MinimumLevel=Info
+            - Serilog:Using:[0]=Serilog.Sinks.Seq
+            - Serilog:WriteTo:[0]:Name=Seq
+            - Serilog:WriteTo:[0]:Args:serverUrl=http://seq:5341
+            - Serilog:Properties:Application=WebApi
+            - Serilog:Properties:Environment=Local Development
+
+    weather.ui:
+        image: weather.ui
+        container_name: weather.ui
+        build:
+            context: .\
+            dockerfile: WeatherUi\\Dockerfile
+        depends_on:
+            - weather.api
+        ports:
+            - 9992:80
