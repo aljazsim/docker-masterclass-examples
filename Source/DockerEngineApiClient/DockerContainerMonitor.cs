@@ -79,7 +79,7 @@ public class DockerContainerMonitor : IDisposable
         }
         catch (Exception ex)
         {
-            this.logger.Error($"Could not connect to Docker Engine API.", ex);
+            this.logger.Error($"Could not connect to Docker Engine API. {ex.Message} {ex.InnerException?.Message}", ex);
         }
     }
 

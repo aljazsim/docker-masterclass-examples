@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "DockerEngineApiClient": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

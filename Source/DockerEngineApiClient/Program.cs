@@ -27,13 +27,14 @@ public static class Program
 
         logger.LogExceptions();
 
+        logger.Information("Starting docker container monitor");
+
         DockerContainerCsvFileWriters = dockerMontainerMonitoringConfiguration.Containers.ToDictionary(c => c.Key, c => new DockerContainerStatsWriter(c.Value));
         DockerContainerMonitors = GetDockerContainerMonitors(dockerMontainerMonitoringConfiguration, clock, logger).ToList();
 
         await Task.WhenAll(DockerContainerMonitors.Select(dcm => dcm.StartAsync()).ToArray());
 
         DockerContainerMonitors.ForEach(dcm => dcm.Dispose());
-        DockerContainerCsvFileWriters.Values.ToList().ForEach(dcw => dcw.Dispose());
     }
 
     #endregion Public Methods

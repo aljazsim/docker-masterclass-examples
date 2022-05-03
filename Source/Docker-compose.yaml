@@ -48,3 +48,27 @@ services:
     ports:
       - 9992:80
     restart: unless-stopped
+
+  monitor:
+    image: monitor
+    container_name: monitor
+    build:
+      context: .
+      dockerfile: DockerEngineApiClient/Dockerfile
+    environment:
+      - Serilog:MinimumLevel=Information
+      - Serilog:Using:[0]=Serilog.Sinks.Seq
+      - Serilog:WriteTo:[0]:Name=Seq
+      - Serilog:WriteTo:[0]:Args:serverUrl=http://seq:5341
+      - Serilog:Properties:Application=Monitor
+      - Serilog:Properties:Environment=Local Development
+      - DockerContainerMonitoring:Docker:Uri=unix:///var/run/docker.sock
+      - DockerContainerMonitoring:Containers:weather.api=/data/weather.api.csv
+      - DockerContainerMonitoring:Containers:weather.ui=/data/weather.ui.csv
+    volumes:
+      - /mnt/c/Development/Data/Docker:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      - seq
+      - weatherapi
+    restart: unless-stopped

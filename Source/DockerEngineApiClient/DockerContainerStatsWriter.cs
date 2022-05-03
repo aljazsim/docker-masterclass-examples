@@ -1,11 +1,15 @@
 ﻿namespace DockerEngineApiClient;
 
-public class DockerContainerStatsWriter : IDisposable
+public class DockerContainerStatsWriter
 {
-    private FileStream fileStream;
-    private StreamWriter fileWriter;
+    private readonly string filePath;
 
     public DockerContainerStatsWriter(string filePath)
+    {
+        this.filePath = filePath;
+    }
+
+    public async Task Write(DockerContainerStats dockerContainerStats)
     {
         if (!Directory.Exists(Path.GetDirectoryName(filePath)))
         {
@@ -14,29 +18,10 @@ public class DockerContainerStatsWriter : IDisposable
 
         if (!File.Exists(filePath))
         {
-            File.WriteAllLines(filePath, new[] { GetHeaderRow() });
+            await File.WriteAllLinesAsync(filePath, new[] { GetHeaderRow() });
         }
 
-        this.fileStream = new FileStream(filePath, FileMode.Append, FileAccess.Write, FileShare.Read);
-        this.fileWriter = new StreamWriter(fileStream);
-    }
-
-    public void Dispose()
-    {
-        this.fileWriter?.Dispose();
-        this.fileWriter = null;
-
-        this.fileStream?.Dispose();
-        this.fileStream = null;
-    }
-
-    public async Task Write(DockerContainerStats dockerContainerStats)
-    {
-        if (this.fileWriter != null)
-        {
-            await this.fileWriter.WriteLineAsync(GetStatRow(dockerContainerStats)).ConfigureAwait(false);
-            await this.fileWriter.FlushAsync().ConfigureAwait(false);
-        }
+        await File.AppendAllLinesAsync(filePath, new[] { GetStatRow(dockerContainerStats) });
     }
 
     private string GetHeaderRow()
