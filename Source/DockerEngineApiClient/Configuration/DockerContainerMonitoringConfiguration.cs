@@ -2,7 +2,6 @@
 
 public class DockerContainerMonitoringConfiguration
 {
-
     #region Public Properties
 
     public Dictionary<string, string> Containers
@@ -18,5 +17,4 @@ public class DockerContainerMonitoringConfiguration
     }
 
     #endregion Public Properties
-
 }

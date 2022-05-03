@@ -20,7 +20,7 @@ public static class Program
     public static async Task Main(string[] args)
     {
         // configuration
-        var configuration = "appsettings.json".GetConfiguration();
+        var configuration = "./appsettings.json".GetConfiguration();
         var dockerMontainerMonitoringConfiguration = configuration.GetDockerContainerMonitoringConfiguration();
         var clock = new Clock();
         var logger = configuration.ConfigureLogging();

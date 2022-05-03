@@ -2,7 +2,6 @@
 {
     public class DockerContainerStats
     {
-
         #region Public Constructors
 
         public DockerContainerStats(DateTimeOffset timestamp, double cpuUsagePercentage, long memoryUsage, long memoryUsageLimit, double memoryUsagePercentage, long storageReadBytes, long storageWriteBytes, long networkReadBytes, long networkWriteBytes)
@@ -21,7 +20,6 @@
         #endregion Public Constructors
 
         #region Public Properties
-
 
         public double CpuUsagePercentage
         {
@@ -69,6 +67,5 @@
         }
 
         #endregion Public Properties
-
     }
 }

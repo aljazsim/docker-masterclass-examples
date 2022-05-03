@@ -6,7 +6,6 @@ namespace DockerEngineApiClient;
 
 public class DockerContainerMonitor : IDisposable
 {
-
     #region Private Fields
 
     private readonly DockerClient dockerClient;
@@ -121,5 +120,4 @@ public class DockerContainerMonitor : IDisposable
     }
 
     #endregion Private Methods
-
 }

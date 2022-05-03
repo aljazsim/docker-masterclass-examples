@@ -21,7 +21,7 @@ namespace DockerEngineApiClient.Extensions
         {
             var builder = new ConfigurationBuilder();
 
-            builder.SetBasePath(Path.GetDirectoryName(configurationFilePath));
+            builder.SetBasePath(Path.GetFullPath(Path.GetDirectoryName(configurationFilePath)));
             builder.AddJsonFile(Path.GetFileName(configurationFilePath), true, false);
             builder.AddEnvironmentVariables();
 
@@ -29,6 +29,5 @@ namespace DockerEngineApiClient.Extensions
         }
 
         #endregion Public Methods
-
     }
 }

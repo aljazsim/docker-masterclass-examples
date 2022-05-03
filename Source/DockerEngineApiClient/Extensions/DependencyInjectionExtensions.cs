@@ -16,6 +16,5 @@ namespace DockerEngineApiClient.Extensions
         }
 
         #endregion Public Methods
-
     }
 }

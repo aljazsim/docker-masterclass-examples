@@ -5,7 +5,6 @@ namespace DockerEngineApiClient
 {
     public class DockerContainerStatsProgress : IProgress<ContainerStatsResponse>
     {
-
         #region Private Fields
 
         private readonly IClock clock;
@@ -82,6 +81,5 @@ namespace DockerEngineApiClient
         }
 
         #endregion Private Methods
-
     }
 }

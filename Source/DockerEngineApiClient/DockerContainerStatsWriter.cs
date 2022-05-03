@@ -7,7 +7,17 @@ public class DockerContainerStatsWriter : IDisposable
 
     public DockerContainerStatsWriter(string filePath)
     {
-        this.fileStream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write, FileShare.Read);
+        if (!Directory.Exists(Path.GetDirectoryName(filePath)))
+        {
+            Directory.CreateDirectory(Path.GetDirectoryName(filePath));
+        }
+
+        if (!File.Exists(filePath))
+        {
+            File.WriteAllLines(filePath, new[] { GetHeaderRow() });
+        }
+
+        this.fileStream = new FileStream(filePath, FileMode.Append, FileAccess.Write, FileShare.Read);
         this.fileWriter = new StreamWriter(fileStream);
     }
 
@@ -22,14 +32,10 @@ public class DockerContainerStatsWriter : IDisposable
 
     public async Task Write(DockerContainerStats dockerContainerStats)
     {
-        if (this.fileStream != null)
+        if (this.fileWriter != null)
         {
-            if (this.fileStream.Position == 0)
-            {
-                await this.fileWriter.WriteLineAsync(GetHeaderRow());
-            }
-
-            await this.fileWriter.WriteLineAsync(GetStatRow(dockerContainerStats));
+            await this.fileWriter.WriteLineAsync(GetStatRow(dockerContainerStats)).ConfigureAwait(false);
+            await this.fileWriter.FlushAsync().ConfigureAwait(false);
         }
     }
 
