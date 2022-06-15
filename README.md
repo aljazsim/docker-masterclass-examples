@@ -1,4 +1,4 @@
-# Creating Docker images
+# Working with Docker Compose
 
 ## Exercise
 
