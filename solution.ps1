@@ -30,10 +30,10 @@ Start-Process "http://localhost:5340/"
 Get-ChildItem -Path "C:\Development\Data\Docker"
 
 # show weather api performance log
-Get-Content -Path "C:\Development\Data\Docker\weather.api.csv" -Wait
+Get-Content -Path "C:\Development\Data\Docker\weather.api.csv" | select -First 10
 
 # show weather ui performance log
-Get-Content -Path "C:\Development\Data\Docker\weather.ui.csv" -Wait
+Get-Content -Path "C:\Development\Data\Docker\weather.ui.csv" -Wait | select -First 10
 
 # docker compose down (stop and remove containers, remove images)
 docker compose --project-name "weatherapp" --file "./Docker-compose.yaml" down --rmi all --volumes
