@@ -10,10 +10,9 @@
 
 Commands: https://docs.docker.com/engine/reference/commandline/image/
 
-| Description       | Command                                     |
-| ----------------- | ------------------------------------------- |
-| List images       | `docker image ls`                           |
-| Pull image        | `docker image pull IMAGE_NAME `             |
-| List image IDs    | `docker image ls --quiet `                  |
-| Remove image      | `docker image rm IMAGE_ID `                 |
-| Remove all images | `docker image rm -f $(docker image ls -aq)` |
+| Description       | Command                                     | Arguments                                    |
+| ----------------- | ------------------------------------------- | -------------------------------------------- |
+| List images       | `docker image ls`                           | --quiet (only ids)                           |
+| Pull image        | `docker image pull IMAGE_NAME `             |                                              |
+| Remove image      | `docker image rm IMAGE_ID `                 | --force (even it it has a stopped container) |
+| Remove all images | `docker image rm -f $(docker image ls -aq)` |                                              |
