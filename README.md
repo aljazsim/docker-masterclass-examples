@@ -4,29 +4,15 @@ Docker compose file:
 
 ## Scenario
 
-1. Show `/Source/WebApi/Dockerfile`
-2. Show `/Source/WebUi/Dockerfile`
-   1. Buid
-      1. ARG
-      2. RUN sed
-3. Show `/Source/Docker-compose.yaml`
-   1. seq
-      1. volumes
-      2. restart policy
-   2. weather.api
-      1. context
-      2. dockerfile
-      3. depends on
-      4. environment (how seq is referenced internally)
-   3. weather.ui
-      1. context
-      2. dockerfile
-      3. args
-4. Run docker compose up
-5. Show apps (UI, API, SEQ)
-6. Show images, containers
-7. Run docker compose down
-8. Show images, containers
+1. check there is no images
+2. check there is no containers
+3. run docker compose up
+4. verify web api is accessible form browser
+5. verify web ui is accessible form browser
+6. verify seq is accessible from browser
+7. run docker compose down
+8. check there is no images
+9. check there is no containers
 
 ## Examples
 
@@ -46,11 +32,3 @@ Docker compose file:
 | SEQ         | http://localhost:5340/ |
 | Weather API | http://localhost:9991/ |
 | Weather UI  | http://localhost:9992/ |
-
-## Clean up
-
-```
-docker container stop $(docker container ls --all --quiet)
-docker container rm $(docker container ls --all --quiet)
-docker image rm -f $(docker image ls -aq)
-```

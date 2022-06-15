@@ -11,7 +11,7 @@ services:
       - ACCEPT_EULA=Y
       - BASE_URI=https://seq
     volumes:
-      - /mnt/c/Development/Data/Seq:/data
+      - C:/Development/Data/Seq:/data
     restart: unless-stopped
 
   weather.api:
