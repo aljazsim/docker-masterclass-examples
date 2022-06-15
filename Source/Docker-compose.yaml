@@ -11,7 +11,7 @@ services:
       - ACCEPT_EULA=Y
       - BASE_URI=https://seq
     volumes:
-      - /mnt/c/Development/Data/Seq:/data
+      - C:\Development\Data\Seq:/data
     restart: unless-stopped
 
   weather.api:
@@ -66,7 +66,7 @@ services:
       - DockerContainerMonitoring:Containers:weather.api=/data/weather.api.csv
       - DockerContainerMonitoring:Containers:weather.ui=/data/weather.ui.csv
     volumes:
-      - /mnt/c/Development/Data/Docker:/data
+      - C:\Development\Data\Docker:/data
       - /var/run/docker.sock:/var/run/docker.sock
     depends_on:
       - seq
