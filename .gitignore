@@ -1,5 +1,8 @@
 .vs
 bin
+obj
 dist
 node_modules
 obj
+v17
+DesignTimeBuild
