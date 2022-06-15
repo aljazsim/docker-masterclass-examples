@@ -30,10 +30,13 @@ Start-Process "http://localhost:5340/"
 Get-ChildItem -Path "C:\Development\Data\Seq"
 
 # docker compose down (stop and remove containers, remove images)
-docker compose --project-name "weatherapp" --file "./Docker-compose.yaml" down --rmi all
+docker compose --project-name "weatherapp" --file "./Docker-compose.yaml" down --rmi --volumes
 
 # list containers
 docker container ls --all
 
 # list images
 docker image ls
+
+# show persisted volume has been removed
+Get-ChildItem -Path "C:\Development\Data\Seq"
