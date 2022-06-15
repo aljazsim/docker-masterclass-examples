@@ -63,7 +63,7 @@ Commands: <https://docs.docker.com/engine/reference/commandline/container/>
 | Docker Compose up   | `docker-compose [ARGUMENTS] up [OPTIONS]`   | --project_name name (groups all containers)      | --detach (run containers in detached mode)                |
 |                     |                                             | --file file_path (docker-compose.yaml file path) | --build (builds images)                                   |
 |                     |                                             |                                                  | --force-recreate (re-pulls and re-builds existing images) |
-| Docker Compose down | `docker-compose [ARGUMENTS] down [OPTIONS]` | --project_name name (groups all containers)      | --rmi (removes referenced images)                         |
+| Docker Compose down | `docker-compose [ARGUMENTS] down [OPTIONS]` | --project_name name (groups all containers)      | --rmi all (removes referenced images)                     |
 |                     |                                             | --file file_path (docker-compose.yaml file path) | --volumes (removes volumes)                               |
 
 ## Links
