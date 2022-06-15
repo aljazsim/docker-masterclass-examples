@@ -1,4 +1,5 @@
+.vs
 bin
+dist
+node_modules
 obj
-v17
-DesignTimeBuild
