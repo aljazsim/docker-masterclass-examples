@@ -23,6 +23,8 @@ docker container ls --all
 
 # verify seq container is accessible from browser
 Start-Process "http://localhost:5341/"
+# Non-Powershell equivilent
+open -a "Google Chrome" http://localhost:5341/
 
 # show container log
 docker logs mycontainer
@@ -41,6 +43,8 @@ docker container ls --all
 
 # verify seq container is no longer accessible from browser
 Start-Process "http://localhost:5341/"
+# Non-Powershell equivilent
+open -a "Google Chrome" http://localhost:5341/
 
 # run container
 docker container run --name mycontainer --tty --env ACCEPT_EULA=Y --publish 5341:80 --detach datalust/seq
@@ -50,6 +54,8 @@ docker container ls --all
 
 # verify seq container is accessible from browser
 Start-Process "http://localhost:5341/"
+# Non-Powershell equivilent
+open -a "Google Chrome" http://localhost:5341/
 
 # stop all containers
 docker container stop $(docker container ls --all --quiet)
